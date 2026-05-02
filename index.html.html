@@ -1,0 +1,2254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Registro Terapéutico Vivid Pastel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+    
+    <style>
+        :root {
+            /* Vivid Pastel Palette */
+            --primary-color: #a29bfe; /* Violeta Suave pero Vibrante */
+            --secondary-color: #fd79a8; /* Rosa Chicle */
+            --accent-color: #81ecec; /* Turquesa Pastel */
+            --peach-color: #fab1a0; /* Durazno */
+            
+            --bg-lavender: #f8effd;
+            
+            /* Gradients for Mesh */
+            --grad-1: rgba(162, 155, 254, 0.8);
+            --grad-2: rgba(253, 121, 168, 0.8);
+            --grad-3: rgba(129, 236, 236, 0.8);
+            --grad-4: rgba(250, 177, 160, 0.8);
+
+            /* Glassmorphism Strict Specs */
+            --glass-bg: rgba(255, 255, 255, 0.7); /* 70% Opacity */
+            --glass-border: rgba(255, 255, 255, 1);
+            --blur: 12px;
+            --radius: 18px;
+            --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            
+            --text-dark: #2d3436;
+            --text-light: #636e72;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-lavender);
+            /* Mesh Gradient Animation */
+            background-image: 
+                radial-gradient(at 0% 0%, var(--grad-1) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, var(--grad-2) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, var(--grad-3) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, var(--grad-4) 0px, transparent 50%);
+            background-size: 200% 200%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--text-dark);
+            min-height: 100vh;
+            padding-bottom: 50px;
+            position: relative;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 120% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glassmorphism Class */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--blur));
+            -webkit-backdrop-filter: blur(var(--blur));
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            box-shadow: 0 10px 30px rgba(162,155,254,0.15), 0 6px 18px rgba(253,121,168,0.12);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 16px 36px rgba(162,155,254,0.22), 0 10px 24px rgba(253,121,168,0.18);
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            margin: 0 20px 20px 20px;
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.9);
+            border-radius: 18px;
+            box-shadow: 0 12px 28px rgba(162,155,254,0.2);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary-color), var(--peach-color));
+            color: white;
+        }
+        
+        .btn-accent {
+            background: linear-gradient(135deg, var(--accent-color), #a5f2f2);
+            color: var(--text-dark);
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Alternate Theme */
+        .theme-aurora {
+            --primary-color: #6c5ce7;
+            --secondary-color: #ff7675;
+            --accent-color: #00cec9;
+            --peach-color: #fab1a0;
+            --glass-bg: rgba(255,255,255,0.6);
+            --blur: 14px;
+        }
+        .theme-aurora body {}
+        .theme-aurora .glass-card {
+            border: 1px solid rgba(255,255,255,0.95);
+            box-shadow: 0 12px 28px rgba(108,92,231,0.25), 0 10px 22px rgba(255,118,117,0.18);
+            background-image:
+                linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.8)),
+                repeating-linear-gradient(0deg, rgba(0,0,0,0.03) 0px, rgba(0,0,0,0.03) 1px, transparent 2px);
+        }
+        .theme-aurora .btn-primary {
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+        }
+        .theme-aurora .btn-secondary {
+            background: linear-gradient(135deg, #ff7675, #fab1a0);
+        }
+        .theme-aurora .btn-accent {
+            background: linear-gradient(135deg, #00cec9, #81ecec);
+        }
+        .theme-aurora .tab-btn.active {
+            box-shadow: 0 12px 28px rgba(108,92,231,0.35);
+        }
+        .theme-aurora .post-it {
+            background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+            background-image:
+                linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.5)),
+                repeating-linear-gradient(90deg, rgba(0,0,0,0.02) 0px, rgba(0,0,0,0.02) 1px, transparent 2px);
+        }
+        
+        .theme-pastel-bright {
+            --primary-color: #b388ff;
+            --secondary-color: #ff87b1;
+            --accent-color: #7ee7e7;
+            --peach-color: #ffb59e;
+            --bg-lavender: #fff3ff;
+            --grad-1: rgba(179, 136, 255, 0.9);
+            --grad-2: rgba(255, 135, 177, 0.9);
+            --grad-3: rgba(126, 231, 231, 0.9);
+            --grad-4: rgba(255, 181, 158, 0.9);
+            --glass-bg: rgba(255,255,255,0.75);
+        }
+        .theme-pastel-dark {
+            --primary-color: #7a6fd6;
+            --secondary-color: #d85c88;
+            --accent-color: #5cc7c7;
+            --peach-color: #e99b86;
+            --bg-lavender: #ece7f6;
+            --grad-1: rgba(122, 111, 214, 0.85);
+            --grad-2: rgba(216, 92, 136, 0.85);
+            --grad-3: rgba(92, 199, 199, 0.85);
+            --grad-4: rgba(233, 155, 134, 0.85);
+            --glass-bg: rgba(255,255,255,0.65);
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+        .calendar-wrapper {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin-top: 8px;
+        }
+        .calendar-header {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin-bottom: 10px;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+        .calendar-header-cell {
+            position: sticky;
+            top: 0;
+            background: rgba(255,255,255,0.6);
+            border: 1px solid rgba(255,255,255,0.9);
+            border-radius: 10px;
+            padding: 8px;
+            z-index: 1;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+        }
+        
+        #globalAgendaList {
+            margin-top: 14px;
+        }
+        .calendar-cell {
+            background: rgba(255,255,255,0.6);
+            border: 1px solid rgba(255,255,255,0.9);
+            border-radius: 10px;
+            min-height: 110px;
+            padding: 10px;
+        }
+        .calendar-date {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 6px;
+        }
+        .calendar-event {
+            background: rgba(255,255,255,0.7);
+            border: 1px solid rgba(255,255,255,0.9);
+            border-radius: 8px;
+            padding: 6px 8px;
+            margin-bottom: 6px;
+            font-size: 0.85rem;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 25px;
+        }
+
+        /* Sidebar - Patient List */
+        .sidebar h2 {
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .patient-list {
+            list-style: none;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .patient-item {
+            cursor: pointer;
+            margin-bottom: 10px;
+            border-left: 4px solid transparent;
+        }
+
+        .patient-item:hover, .patient-item.active {
+            border-left-color: var(--primary-color);
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.8));
+            box-shadow: 0 8px 18px rgba(162,155,254,0.18);
+        }
+
+        /* Main Content */
+        .main-content {
+            display: none; /* Hidden until patient selected */
+        }
+        
+        .main-content.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--peach-color);
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        /* Forms */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .form-full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.5);
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background: white;
+        }
+
+        /* Objectives Section */
+        .objectives-container {
+            background: rgba(255,255,255,0.3);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .specific-objective-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            background: rgba(255,255,255,0.6);
+            padding: 8px;
+            border-radius: 8px;
+        }
+
+        /* Mood Tracker */
+        .mood-selector {
+            display: flex;
+            gap: 10px;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+
+        .mood-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 10px;
+            transition: all 0.2s;
+            opacity: 0.6;
+        }
+
+        .mood-option:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .mood-option.selected {
+            opacity: 1;
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.8));
+            box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+            border: 1px solid rgba(255,255,255,0.9);
+        }
+
+        .mood-icon {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        /* Agenda Post-its */
+        .agenda-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .post-it {
+            background: #fffcd7; /* Pastel Yellow */
+            padding: 20px;
+            border-radius: 2px 2px 15px 2px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            transform: rotate(-1deg);
+            position: relative;
+            font-family: 'Kalam', cursive;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .post-it:nth-child(even) {
+            background: #e0f9f9; /* Pastel Blue */
+            transform: rotate(1deg);
+        }
+
+        .post-it::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            width: 60px;
+            height: 20px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            transform: rotate(-6deg);
+            border-radius: 4px;
+        }
+
+        .post-it-date {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #555;
+        }
+        
+        .post-it-note {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed rgba(0,0,0,0.1);
+            color: #666;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .tab-btn {
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.4);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+        
+        .tab-btn.active {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 10px 24px rgba(162,155,254,0.35);
+            transform: translateY(-1px);
+        }
+        
+        .tab-pane {
+            display: none;
+        }
+        
+        .tab-pane.active {
+            display: block;
+        }
+
+        /* Toast */
+        .toast-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .toast {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 15px 25px;
+            border-radius: 12px;
+            margin-top: 10px;
+            border-left: 5px solid var(--primary-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            animation: slideIn 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            width: 95%;
+            max-width: 900px;
+            padding: 35px;
+        }
+        /* .config-layout removed */
+        /* .psych-config-only removed */
+
+        .form-visual {
+            display: grid;
+            grid-template-columns: 1.4fr 0.6fr;
+            gap: 16px;
+            align-items: start;
+        }
+        .illustration-card {
+            background: rgba(255,255,255,0.65);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            box-shadow: 0 10px 24px rgba(162,155,254,0.18), 0 8px 18px rgba(253,121,168,0.14);
+            padding: 12px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 8px;
+        }
+        .illustration-card .big-icon {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+        }
+        .illustration-separator {
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(135deg, var(--grad-1), var(--grad-2));
+            mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width=\"400\" height=\"60\" viewBox=\"0 0 400 60\"><path d=\"M0,30 C80,50 120,10 200,30 C280,50 320,10 400,30 L400,60 L0,60 Z\" fill=\"white\"/></svg>') no-repeat center / cover;
+            -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width=\"400\" height=\"60\" viewBox=\"0 0 400 60\"><path d=\"M0,30 C80,50 120,10 200,30 C280,50 320,10 400,30 L400,60 L0,60 Z\" fill=\"white\"/></svg>') no-repeat center / cover;
+        }
+        .float-blobs { position: relative; width: 100%; height: 90px; }
+        .blob {
+            position: absolute; border-radius: 50%;
+            filter: blur(8px); opacity: .7;
+            animation: float 6s ease-in-out infinite;
+        }
+        .blob.a { width: 90px; height: 90px; background: var(--grad-3); left: 10%; top: 10%; animation-delay: 0s; }
+        .blob.b { width: 70px; height: 70px; background: var(--grad-4); left: 60%; top: 20%; animation-delay: 1s; }
+        .blob.c { width: 60px; height: 60px; background: var(--grad-2); left: 30%; top: 40%; animation-delay: 2s; }
+        @keyframes float { 0%{ transform: translateY(0)} 50%{ transform: translateY(-10px)} 100%{ transform: translateY(0)} }
+        .field { position: relative; }
+        .field .input-icon {
+            position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+            color: var(--primary-color); font-size: 1rem;
+        }
+        .with-icon { padding-left: 38px; }
+        .field:focus-within { box-shadow: 0 0 0 3px rgba(162,155,254,0.15); border-radius: 12px; }
+        .block-title { font-size: 1rem; font-weight: 600; color: var(--text-dark); margin: 8px 0; }
+        @media (max-width: 980px){
+            .form-visual { grid-template-columns: 1fr; }
+            .illustration-card { order: -1; }
+        }
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .hero-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        .hero-sub {
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+        .hero-illustration {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin-top: 8px;
+        }
+        .hero-bubble {
+            width: 84px; height: 84px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--grad-1), var(--grad-2));
+            box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+            display: flex; align-items: center; justify-content: center;
+            color: #fff;
+            backdrop-filter: blur(6px);
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+        .hero-bubble.alt { background: linear-gradient(135deg, var(--grad-3), var(--grad-4)); }
+        .hero-bubble:hover { transform: scale(1.05); box-shadow: 0 14px 28px rgba(0,0,0,0.12); }
+        .specialty-cards {
+            display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 12px 0;
+        }
+        .specialty-card {
+            padding: 14px; border-radius: 16px; background: rgba(255,255,255,0.7);
+            border: 1px solid var(--glass-border); cursor: pointer;
+            display: flex; flex-direction: column; align-items: center; gap: 6px;
+            transition: transform .2s, box-shadow .2s;
+        }
+        .specialty-card:hover { transform: scale(1.03); box-shadow: 0 12px 28px rgba(0,0,0,0.12); }
+        .specialty-card.selected { background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85)); border-color: var(--primary-color); box-shadow: 0 12px 28px rgba(162,155,254,0.25); }
+        .specialty-card i { font-size: 1.6rem; color: var(--primary-color); }
+        .specialty-card span { font-weight: 600; color: var(--text-dark); }
+        .specialty-desc { font-size: .8rem; color: var(--text-light); text-align: center; }
+        .setup-steps {
+            display: flex; justify-content: center; gap: 16px; margin-top: 8px;
+        }
+        .setup-step {
+            display: flex; align-items: center; gap: 6px; color: var(--text-light);
+            background: rgba(255,255,255,0.6); border: 1px solid var(--glass-border);
+            border-radius: 12px; padding: 8px 12px;
+        }
+
+        /* Visibility based on profession */
+        .psych-only { display: none; }
+        body[data-specialty="Psicólogo/a"] .psych-only { display: block; }
+        body[data-specialty="Psicólogo/a"] .not-psych { display: none; }
+        
+        /* Ensure inputs in hidden containers don't break layout or validation (though 'display:none' handles it) */
+
+        /* Background Options */
+        .bg-static-mesh {
+            background-image: 
+                radial-gradient(at 0% 0%, var(--grad-1) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, var(--grad-2) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, var(--grad-3) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, var(--grad-4) 0px, transparent 50%);
+            background-size: 100% 100%;
+            animation: none !important;
+        }
+        .bg-blue-pastel {
+            background-color: #e0f7fa;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(129, 236, 236, 0.4) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(162, 155, 254, 0.4) 0%, transparent 40%);
+            background-size: 100% 100%;
+            animation: none !important;
+        }
+        .bg-pink-pastel {
+            background-color: #fce4ec;
+            background-image: 
+                radial-gradient(circle at 10% 80%, rgba(253, 121, 168, 0.4) 0%, transparent 40%),
+                radial-gradient(circle at 90% 20%, rgba(250, 177, 160, 0.4) 0%, transparent 40%);
+            background-size: 100% 100%;
+            animation: none !important;
+        }
+
+        .bg-selector {
+            display: flex;
+            gap: 10px;
+            margin-right: 15px;
+            background: rgba(255,255,255,0.5);
+            padding: 5px 10px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.8);
+        }
+        .bg-option {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .bg-option:hover { transform: scale(1.15); }
+        .bg-option.active { border-color: var(--text-dark); transform: scale(1.1); }
+        
+        .bg-opt-1 { background: linear-gradient(135deg, #a29bfe, #fd79a8); }
+        .bg-opt-2 { background: linear-gradient(135deg, #e0f7fa, #81ecec); }
+        .bg-opt-3 { background: linear-gradient(135deg, #fce4ec, #fd79a8); }
+
+    </style>
+</head>
+<body>
+
+    <!-- Modal Configuración -->
+    <div id="configModal" class="modal">
+        <div class="glass-card modal-content">
+            <h2 style="text-align:center; color:var(--primary-color); margin-bottom:30px; font-weight:700;">Bienvenido/a, comencemos configurando tu perfil</h2>
+            
+            <div style="display:grid; grid-template-columns: 280px 1fr; gap:40px; align-items:start;">
+                <!-- Left: Info -->
+                <div class="hero" style="align-items:flex-start; text-align:left; margin:0;">
+                    <div class="hero-title" style="font-size:1.4rem;">Registro Terapéutico</div>
+                    <div class="hero-sub" style="margin-bottom:20px;">Plataforma de gestión clínica integral</div>
+                    
+                    <div class="hero-illustration" style="justify-content:flex-start; margin-bottom:25px;">
+                        <div class="hero-bubble"><i class="fas fa-hands"></i></div>
+                        <div class="hero-bubble alt"><i class="fas fa-brain"></i></div>
+                        <div class="hero-bubble"><i class="fas fa-person-walking"></i></div>
+                    </div>
+                    
+                    <div class="setup-steps" style="flex-direction:column; align-items:flex-start; gap:12px; margin:0;">
+                        <div class="setup-step" style="width:100%;"><i class="fas fa-user-md" style="width:20px;"></i> Configura tu perfil</div>
+                        <div class="setup-step" style="width:100%;"><i class="fas fa-users" style="width:20px;"></i> Gestiona pacientes</div>
+                        <div class="setup-step" style="width:100%;"><i class="fas fa-notes-medical" style="width:20px;"></i> Registra sesiones</div>
+                    </div>
+                </div>
+
+                <!-- Right: Form -->
+                <form id="configForm" style="margin-top:0;">
+                    <div class="form-group">
+                        <label>Nombre Profesional</label>
+                        <input type="text" id="profName" required style="width:100%; padding:12px; border-radius:12px; border:1px solid #ccc;" placeholder="Ingresa tu nombre">
+                    </div>
+                    <div class="form-group">
+                        <label>Especialidad</label>
+                        <input type="hidden" id="profSpecialty">
+                        <div class="specialty-cards" style="grid-template-columns: 1fr 1fr; gap:15px;">
+                            <div class="specialty-card" data-value="Terapia Ocupacional">
+                                <i class="fas fa-hands"></i>
+                                <span>Terapia Ocupacional</span>
+                                <div class="specialty-desc">Función y participación</div>
+                            </div>
+                            <div class="specialty-card" data-value="Fonoaudiología">
+                                <i class="fas fa-brain"></i>
+                                <span>Fonoaudiología</span>
+                                <div class="specialty-desc">Lenguaje y deglución</div>
+                            </div>
+                            <div class="specialty-card" data-value="Kinesiología">
+                                <i class="fas fa-person-walking"></i>
+                                <span>Kinesiología</span>
+                                <div class="specialty-desc">Movimiento y fuerza</div>
+                            </div>
+                            <div class="specialty-card" data-value="Psicólogo/a">
+                                <i class="fas fa-brain"></i>
+                                <span>Psicólogo/a</span>
+                                <div class="specialty-desc">Salud mental y bienestar</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:100%; padding:15px; font-size:1.1rem; margin-top:10px;">Comenzar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <header class="glass-card">
+        <div class="header-info">
+            <h1>Registro Terapéutico</h1>
+            <div id="profInfoDisplay" style="color:var(--text-light); font-size:0.9rem; margin-top:5px;"></div>
+        </div>
+        <div class="header-actions">
+            <div class="bg-selector">
+                <div class="bg-option bg-opt-1" onclick="applyBackground('default')" title="Original"></div>
+                <div class="bg-option bg-opt-2" onclick="applyBackground('blue')" title="Azul Pastel"></div>
+                <div class="bg-option bg-opt-3" onclick="applyBackground('pink')" title="Rosa Pastel"></div>
+            </div>
+            <button id="btnExport" class="btn btn-secondary"><i class="fas fa-save"></i> Respaldar</button>
+            <button id="btnImport" class="btn btn-accent"><i class="fas fa-folder-open"></i> Restaurar</button>
+            <input type="file" id="fileImport" accept=".json" style="display:none">
+            <button id="btnExportPDF" class="btn btn-primary" style="margin-left:10px;"><i class="fas fa-file-pdf"></i> Exportar PDF</button>
+        </div>
+    </header>
+    <!-- 🌈 Dashboard -->
+<section class="container" style="margin-top:10px;">
+    <div class="glass-card" style="grid-column: 1 / -1;">
+        
+        <!-- Mensaje motivador -->
+        <div id="dashboardMessage" style="text-align:center; margin-bottom:20px; font-weight:600; color:var(--primary-color); font-size:1.1rem;">
+            ✨ Hoy será un gran día ✨
+        </div>
+
+        <!-- Resumen -->
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:15px; margin-bottom:20px;">
+            
+            <div class="glass-card" style="text-align:center;">
+                <div>👥 Pacientes</div>
+                <h2 id="totalPatients">0</h2>
+            </div>
+
+            <div class="glass-card" style="text-align:center;">
+                <div>📝 Sesiones</div>
+                <h2 id="totalSessions">0</h2>
+            </div>
+
+        </div>
+
+        <!-- Pacientes del día -->
+        <div>
+            <h3 style="color:var(--secondary-color); margin-bottom:10px;">📅 Hoy</h3>
+            <div id="todayPatients"></div>
+        </div>
+
+    </div>
+</section>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar glass-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                <h2>Pacientes</h2>
+                <button id="btnNewPatient" class="btn btn-primary" style="padding: 5px 10px;"><i class="fas fa-plus"></i></button>
+            </div>
+            
+            <input type="text" id="searchPatient" placeholder="Buscar..." style="margin-bottom:15px;">
+            
+            <ul id="patientList" class="patient-list">
+                <!-- Lista dinámica -->
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main id="mainContent" class="main-content glass-card">
+            <!-- Patient Header Info -->
+            <div id="patientHeader" style="margin-bottom:20px; border-bottom:1px solid rgba(0,0,0,0.05); padding-bottom:20px;">
+                <!-- Relleno dinámico -->
+            </div>
+
+            <!-- Tabs -->
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('clinical')">🩺 Ficha Clínica</button>
+                <button class="tab-btn" onclick="switchTab('objectives')">🎯 Objetivos</button>
+                <button class="tab-btn" onclick="switchTab('sessions')">📝 Sesiones</button>
+                <button class="tab-btn" onclick="switchTab('agenda')">📅 Agenda</button>
+                <button class="tab-btn" onclick="switchTab('agenda-global')">📅 Agenda Global</button>
+                <button class="tab-btn" onclick="switchTab('whatsapp')">💬 WhatsApp</button>
+                <button class="tab-btn" onclick="switchTab('evaluations')">📊 Evaluaciones</button>
+            </div>
+
+            <!-- Tab Content: Clinical Data -->
+            <div id="tab-clinical" class="tab-pane active">
+                <h3 class="section-title">🩺 Datos Clínicos</h3>
+                <div class="form-visual">
+                    <form id="clinicalForm">
+                        <h4 class="block-title">🩺 Ficha clínica</h4>
+                        
+                        <!-- Campos Generales (No Psicología) -->
+                        <div class="not-psych">
+                            <h4 class="block-title">🧠 Diagnóstico</h4>
+                            <div class="form-group field">
+                                <label>Diagnóstico</label>
+                                <i class="fas fa-stethoscope input-icon"></i>
+                                <textarea id="pDiagnosis" rows="3" class="with-icon"></textarea>
+                            </div>
+                            <h4 class="block-title">📌 Antecedentes relevantes</h4>
+                            <div class="form-group field">
+                                <label>Antecedentes Relevantes</label>
+                                <i class="fas fa-notes-medical input-icon"></i>
+                                <textarea id="pBackground" rows="3" class="with-icon"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Campos Exclusivos Psicología -->
+                        <div class="psych-only">
+                            <h4 class="block-title">🧠 Motivo de Consulta</h4>
+                            <div class="form-group field">
+                                <label>Motivo de consulta</label>
+                                <i class="fas fa-comment-medical input-icon"></i>
+                                <textarea id="psychReason" rows="3" class="with-icon" placeholder="Razón principal de la consulta..."></textarea>
+                            </div>
+
+                            <h4 class="block-title">📜 Antecedentes</h4>
+                            <div class="form-group field">
+                                <label>Antecedentes psicológicos/psiquiátricos</label>
+                                <i class="fas fa-history input-icon"></i>
+                                <textarea id="psychHistory" rows="3" class="with-icon" placeholder="Historia clínica previa, tratamientos..."></textarea>
+                            </div>
+
+                            <h4 class="block-title">🏷️ Diagnóstico (DSM-5 / CIE-11)</h4>
+                            <div class="form-group field">
+                                <label>Diagnóstico Multiaxial / Estructural</label>
+                                <i class="fas fa-file-medical input-icon"></i>
+                                <textarea id="psychDiagnosis" rows="2" class="with-icon" placeholder="Códigos y descripción..."></textarea>
+                            </div>
+                        </div>
+
+                        <div style="display:flex; gap:10px;">
+                            <button type="submit" class="btn btn-primary">💾 Guardar Cambios</button>
+                            <button type="button" id="btnDeletePatient" class="btn btn-secondary" style="background:#ff7675;">🗑️ Eliminar Usuario</button>
+                        </div>
+                    </form>
+                    <div class="illustration-card">
+                        <i class="fas fa-user-doctor big-icon"></i>
+                        <div style="color:var(--text-light);">🩺 Registra aquí la información clínica relevante del paciente</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Objectives -->
+            <div id="tab-objectives" class="tab-pane">
+                <h3 class="section-title">🎯 Plan de Tratamiento</h3>
+                <div class="form-visual">
+                    <div>
+                        <h4 class="block-title">🎯 Objetivos</h4>
+                        
+                        <div class="psych-only form-group field">
+                            <label>🧭 Enfoque Terapéutico</label>
+                            <i class="fas fa-compass input-icon"></i>
+                            <input type="text" id="psychApproach" class="with-icon" placeholder="Ej: Cognitivo-Conductual, Sistémico...">
+                        </div>
+
+                        <div class="form-group field">
+                            <label>🎯 Objetivo General (Visión a largo plazo)</label>
+                            <i class="fas fa-bullseye input-icon"></i>
+                            <textarea id="generalObj" rows="2" class="with-icon" placeholder="Ej: Mejorar la funcionalidad en actividades de la vida diaria..."></textarea>
+                            <div id="objSuggestions" style="margin-top:5px; font-size:0.85rem; color:var(--text-light); font-style:italic;"></div>
+                        </div>
+                        <div class="objectives-container">
+                            <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                                <i class="fas fa-clipboard-check" style="color:var(--primary-color); font-size:1.2rem;"></i>
+                                <label style="margin:0;">📋 Objetivos Específicos</label>
+                            </div>
+                            <div style="display:flex; gap:10px; margin-bottom:15px;">
+                                <div class="field" style="flex:1;">
+                                    <i class="fas fa-list-check input-icon"></i>
+                                    <input type="text" id="newSpecObj" class="with-icon" placeholder="Nuevo objetivo específico...">
+                                </div>
+                                <button id="btnAddSpecObj" class="btn btn-secondary"><i class="fas fa-plus"></i> ➕</button>
+                            </div>
+                            <div id="specificObjList"></div>
+                        </div>
+                        <button id="btnSaveObjectives" class="btn btn-primary">💾 Guardar Objetivos</button>
+                    </div>
+                    <div class="illustration-card">
+                        <i class="fas fa-bullseye big-icon"></i>
+                        <div style="color:var(--text-light);">🎯 Define objetivos claros y medibles</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Sessions -->
+            <div id="tab-sessions" class="tab-pane">
+                <h3 class="section-title">📝 Registro de Sesiones</h3>
+                <div class="form-visual">
+                    <form id="sessionForm">
+                        <h4 class="block-title">🧾 Registro de sesión</h4>
+                        <div class="form-grid">
+                            <div class="form-group field">
+                                <label>Fecha</label>
+                                <i class="fas fa-calendar input-icon"></i>
+                                <input type="date" id="sessDate" required class="with-icon">
+                            </div>
+                            <div class="form-group field">
+                                <label>N° Sesión</label>
+                                <i class="fas fa-list-ol input-icon"></i>
+                                <input type="number" id="sessNumber" required class="with-icon">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>🙂 Ánimo Inicial</label>
+                            <div class="mood-selector" id="startMood">
+                                <div class="mood-option" data-value="Energía Alta"><i class="fas fa-bolt mood-icon" style="color:#fdcb6e"></i><span>Energía Alta</span></div>
+                                <div class="mood-option" data-value="En calma"><i class="fas fa-feather mood-icon" style="color:#74b9ff"></i><span>En calma</span></div>
+                                <div class="mood-option" data-value="Disperso"><i class="fas fa-wind mood-icon" style="color:#a29bfe"></i><span>Disperso</span></div>
+                                <div class="mood-option" data-value="Motivado"><i class="fas fa-star mood-icon" style="color:#ff7675"></i><span>Motivado</span></div>
+                            </div>
+                            <input type="hidden" id="inputStartMood">
+                        </div>
+                        
+                        <div class="psych-only form-grid" style="margin-bottom:15px; border-bottom:1px dashed var(--peach-color); padding-bottom:15px;">
+                            <div class="form-group field">
+                                <label>👥 Población</label>
+                                <i class="fas fa-users input-icon"></i>
+                                <select id="sessPsychPop" class="with-icon">
+                                    <option value="">Seleccione...</option>
+                                    <option value="infantil">Infantil</option>
+                                    <option value="adolescente">Adolescente</option>
+                                    <option value="adulto">Adulto</option>
+                                    <option value="mayor">Persona Mayor</option>
+                                    <option value="pareja">Pareja</option>
+                                    <option value="familia">Familia</option>
+                                </select>
+                            </div>
+                            <div class="form-group field">
+                                <label>💻 Modalidad</label>
+                                <i class="fas fa-laptop input-icon"></i>
+                                <select id="sessPsychModality" class="with-icon">
+                                    <option value="presencial">Presencial</option>
+                                    <option value="online">Online</option>
+                                    <option value="mixta">Mixta</option>
+                                </select>
+                            </div>
+                            <div class="form-group field">
+                                <label>⏱️ Duración</label>
+                                <i class="fas fa-hourglass-half input-icon"></i>
+                                <select id="sessPsychDuration" class="with-icon">
+                                    <option value="45">45 min</option>
+                                    <option value="50">50 min</option>
+                                    <option value="60">60 min</option>
+                                </select>
+                            </div>
+                            <div class="form-group field">
+                                <label>🧠 Enfoque</label>
+                                <i class="fas fa-brain input-icon"></i>
+                                <select id="sessPsychApproach" class="with-icon">
+                                   <option value="">Seleccione...</option>
+                                   <option value="cognitivo_conductual">Cognitivo Conductual</option>
+                                   <option value="psicoanalisis">Psicoanálisis</option>
+                                   <option value="humanista">Humanista</option>
+                                   <option value="sistemico">Sistémico</option>
+                                   <option value="gestalt">Gestalt</option>
+                                   <option value="integrativo">Integrativo</option>
+                                   <option value="otro">Otro</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="not-psych form-group field">
+                            <label>✍️ Trabajo Realizado</label>
+                            <i class="fas fa-pencil input-icon"></i>
+                            <textarea id="sessWork" class="with-icon"></textarea>
+                        </div>
+
+                        <div class="psych-only form-group field">
+                            <label>📖 Registro Narrativo de Sesión</label>
+                            <i class="fas fa-book-open input-icon"></i>
+                            <textarea id="psychSessionNote" rows="6" class="with-icon" placeholder="Desarrollo de la sesión, intervenciones, observaciones..."></textarea>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group field">
+                                <label>⭐ Logros / Avances</label>
+                                <i class="fas fa-trophy input-icon"></i>
+                                <textarea id="sessAchieve" class="with-icon"></textarea>
+                            </div>
+                            <div class="form-group field">
+                                <label>⚠️ Dificultades / Obstáculos</label>
+                                <i class="fas fa-triangle-exclamation input-icon"></i>
+                                <textarea id="sessDiff" class="with-icon"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="not-psych form-group field">
+                            <label>🏠 Actividades para la casa</label>
+                            <i class="fas fa-home input-icon"></i>
+                            <textarea id="sessHomework" class="with-icon"></textarea>
+                        </div>
+
+                        <div class="psych-only">
+                            <div class="form-group field">
+                                <label>🏠 Tareas para el consultante</label>
+                                <i class="fas fa-clipboard-list input-icon"></i>
+                                <textarea id="psychHomework" class="with-icon" placeholder="Tareas inter-sesión..."></textarea>
+                            </div>
+                            <div class="form-group field" style="border: 1px dashed #fab1a0; padding: 10px; border-radius: 12px; background: rgba(255,255,255,0.4);">
+                                <label>🔒 Observaciones Confidenciales (No visibles en reportes)</label>
+                                <i class="fas fa-user-secret input-icon"></i>
+                                <textarea id="psychPrivateNotes" class="with-icon" placeholder="Notas personales del terapeuta..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>🧘 Ánimo Final</label>
+                            <div class="mood-selector" id="endMood">
+                                <div class="mood-option" data-value="Energía Alta"><i class="fas fa-bolt mood-icon" style="color:#fdcb6e"></i><span>Energía Alta</span></div>
+                                <div class="mood-option" data-value="En calma"><i class="fas fa-feather mood-icon" style="color:#74b9ff"></i><span>En calma</span></div>
+                                <div class="mood-option" data-value="Disperso"><i class="fas fa-wind mood-icon" style="color:#a29bfe"></i><span>Disperso</span></div>
+                                <div class="mood-option" data-value="Motivado"><i class="fas fa-star mood-icon" style="color:#ff7675"></i><span>Motivado</span></div>
+                            </div>
+                            <input type="hidden" id="inputEndMood">
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width:100%">💾 Registrar Sesión</button>
+                    </form>
+                    <div class="illustration-card">
+                        <i class="fas fa-calendar-check big-icon"></i>
+                        <div style="color:var(--text-light);">📝 Describe lo trabajado en la sesión</div>
+                    </div>
+                </div>
+
+                <div id="sessionsHistory"></div>
+            </div>
+
+            <!-- Tab Content: Agenda -->
+            <div id="tab-agenda" class="tab-pane">
+                <h3 class="section-title">📅 Agenda</h3>
+                <div class="form-visual">
+                    <form id="agendaForm">
+                        <h4 class="block-title">📅 Agenda</h4>
+                        <div class="form-grid">
+                            <div class="form-group field">
+                                <label>📅 Fecha</label>
+                                <i class="fas fa-calendar input-icon"></i>
+                                <input type="date" id="apptDate" required class="with-icon">
+                            </div>
+                            <div class="form-group field">
+                                <label>⏰ Hora</label>
+                                <i class="fas fa-clock input-icon"></i>
+                                <input type="time" id="apptTime" required class="with-icon">
+                            </div>
+                            <div class="form-group form-full field">
+                                <label>📝 Nota de Recordatorio</label>
+                                <i class="fas fa-sticky-note input-icon"></i>
+                                <input type="text" id="apptNote" class="with-icon" placeholder="Ej: Traer informes...">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width:100%">📅 Agendar</button>
+                    </form>
+                    <div class="illustration-card">
+                        <i class="fas fa-calendar-days big-icon"></i>
+                        <div style="color:var(--text-light);">📅 Agenda sesiones futuras</div>
+                    </div>
+                </div>
+                <div id="agendaList" class="agenda-grid"></div>
+            </div>
+
+            <!-- Tab Content: WhatsApp -->
+            <div id="tab-whatsapp" class="tab-pane">
+                <h3 class="section-title">💬 Generador de Mensajes</h3>
+                <h4 class="block-title">💬 WhatsApp</h4>
+                <div class="form-group">
+                    <label>📝 Seleccionar Sesión para Reporte</label>
+                    <select id="whatsappSessionSelect"></select>
+                </div>
+                <div class="form-group">
+                    <label>Vista Previa (Sin Emojis - Solo Texto)</label>
+                    <textarea id="whatsappPreview" rows="12" readonly style="font-family:monospace; font-size:0.9rem;"></textarea>
+                </div>
+                <button id="btnSendWhatsapp" class="btn btn-secondary" style="background:#25D366;"><i class="fab fa-whatsapp"></i> 💬 Enviar a Apoderado</button>
+            </div>
+
+            <!-- Tab Content: Agenda Global -->
+            <div id="tab-agenda-global" class="tab-pane">
+                <h3 class="section-title">📅 Agenda Global</h3>
+                <div class="form-grid" style="margin-bottom:15px;">
+                    <div class="form-group">
+                        <label>Vista</label>
+                        <select id="globalView">
+                            <option value="diaria">Diaria</option>
+                            <option value="semanal">Semanal</option>
+                            <option value="mensual">Mensual</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha base</label>
+                        <input type="date" id="globalAnchorDate">
+                    </div>
+                </div>
+                <div id="globalAgendaList" class="agenda-grid"></div>
+            </div>
+            <!-- Tab Content: Evaluaciones -->
+            <div id="tab-evaluations" class="tab-pane">
+                <h3 class="section-title">📊 Evaluaciones</h3>
+                <div class="form-visual">
+                    <form id="evaluationForm">
+                        <h4 class="block-title">📊 Evaluaciones</h4>
+                        <div class="form-grid">
+                            <div class="form-group field">
+                                <label>🔬 Nombre de la prueba</label>
+                                <i class="fas fa-microscope input-icon"></i>
+                                <input type="text" id="evalName" required class="with-icon">
+                            </div>
+                            <h4 class="block-title form-full">📈 Progreso</h4>
+                            <div class="form-group form-full field">
+                                <label>📊 Análisis clínico</label>
+                                <i class="fas fa-chart-line input-icon"></i>
+                                <textarea id="evalAnalysis" rows="3" required class="with-icon"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width:100%">💾 Guardar Evaluación</button>
+                    </form>
+                    <div class="illustration-card">
+                        <i class="fas fa-magnifying-glass big-icon"></i>
+                        <div style="color:var(--text-light);">📊 Registra resultados de evaluaciones</div>
+                    </div>
+                </div>
+                <div id="evaluationsList"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- New Patient Modal -->
+    <div id="newPatientModal" class="modal">
+        <div class="glass-card modal-content">
+            <h3>👤 Nuevo Paciente</h3>
+            <div class="form-visual">
+                <form id="newPatientForm">
+                    <div class="form-group field">
+                        <label>👤 Nombre Completo</label>
+                        <i class="fas fa-user input-icon"></i>
+                        <input type="text" id="npName" required class="with-icon">
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group field">
+                            <label>🆔 RUT</label>
+                            <i class="fas fa-id-card input-icon"></i>
+                            <input type="text" id="npRUT" required class="with-icon">
+                        </div>
+                        <div class="form-group field">
+                            <label>🎂 Fecha Nacimiento</label>
+                            <i class="fas fa-cake-candles input-icon"></i>
+                            <input type="date" id="npDOB" required class="with-icon">
+                        </div>
+                    </div>
+                    <div class="form-group field">
+                        <label>👥 Nombre Apoderado</label>
+                        <i class="fas fa-user-group input-icon"></i>
+                        <input type="text" id="npParent" class="with-icon">
+                    </div>
+                    <div class="form-group field">
+                        <label>💬 WhatsApp (Ej: +569...)</label>
+                        <i class="fab fa-whatsapp input-icon"></i>
+                        <input type="text" id="npWhatsapp" required class="with-icon">
+                    </div>
+                    <div style="display:flex; gap:10px; margin-top:15px;">
+                        <button type="submit" class="btn btn-primary" style="flex:1">💾 Guardar</button>
+                        <button type="button" class="btn btn-secondary" onclick="closeModal('newPatientModal')" style="flex:1; background:#fab1a0;">Cancelar</button>
+                    </div>
+                </form>
+                <div class="illustration-card">
+                    <i class="fas fa-user-circle big-icon"></i>
+                    <div style="color:var(--text-light);">👤 Crea un nuevo perfil de paciente</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script>
+        // --- State Management ---
+        let appData = {
+            config: { name: '', specialty: '', theme: 'default', bgType: 'default' },
+            patients: [],
+            globalAgenda: []
+        };
+        let currentPatientId = null;
+
+        // --- Init ---
+        document.addEventListener('DOMContentLoaded', () => {
+            loadData();
+            if(!appData.config.name) {
+                document.getElementById('configModal').style.display = 'flex';
+            } else {
+                updateHeader();
+            }
+            
+            setupEventListeners();
+            applyTheme(appData.config.theme || 'default');
+            applyBackground(appData.config.bgType || 'default');
+            const sel = document.getElementById('themeSelect');
+            if(sel) sel.value = appData.config.theme || 'default';
+            setupSpecialtyCards();
+        });
+
+        // --- Core Functions ---
+        function saveData() {
+            localStorage.setItem('terapiaApp_Complete', JSON.stringify(appData));
+        }
+
+        function loadData() {
+            const data = localStorage.getItem('terapiaApp_Complete');
+            if(data) appData = JSON.parse(data);
+            if(!appData.globalAgenda) appData.globalAgenda = [];
+            if(!appData.config) appData.config = { name: '', specialty: '', theme: 'default', bgType: 'default' };
+            if(!appData.config.theme) appData.config.theme = 'default';
+            if(!appData.config.bgType) appData.config.bgType = 'default';
+            if(appData.config.specialty) document.body.dataset.specialty = appData.config.specialty; // Restore specialty on load
+            renderPatientList();
+        }
+
+        function applyBackground(type) {
+            const body = document.body;
+            body.classList.remove('bg-static-mesh', 'bg-blue-pastel', 'bg-pink-pastel');
+            
+            // Remove active from all options
+            document.querySelectorAll('.bg-option').forEach(o => o.classList.remove('active'));
+
+            if(type === 'default') {
+                body.classList.add('bg-static-mesh');
+                document.querySelector('.bg-opt-1')?.classList.add('active');
+            } else if(type === 'blue') {
+                body.classList.add('bg-blue-pastel');
+                document.querySelector('.bg-opt-2')?.classList.add('active');
+            } else if(type === 'pink') {
+                body.classList.add('bg-pink-pastel');
+                document.querySelector('.bg-opt-3')?.classList.add('active');
+            }
+            
+            appData.config.bgType = type;
+            saveData();
+        }
+
+        function showToast(msg, type='info') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.style.borderLeftColor = type === 'success' ? '#00b894' : '#0984e3';
+            toast.innerHTML = `<i class="fas fa-${type === 'success' ? 'check' : 'info'}-circle"></i> ${msg}`;
+            container.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        function calculateAge(dobString) {
+            const dob = new Date(dobString);
+            const diff = Date.now() - dob.getTime();
+            const ageDate = new Date(diff);
+            return Math.abs(ageDate.getUTCFullYear() - 1970);
+        }
+        
+        function parseYMD(str) {
+            const parts = str.split('-').map(Number);
+            return new Date(parts[0], parts[1]-1, parts[2]);
+        }
+        
+        function applyTheme(theme) {
+            const body = document.body;
+            body.classList.remove('theme-aurora','theme-pastel-dark','theme-pastel-bright');
+            if(theme === 'aurora') body.classList.add('theme-aurora');
+            else if(theme === 'dark') body.classList.add('theme-pastel-dark');
+            else if(theme === 'bright') body.classList.add('theme-pastel-bright');
+            appData.config.theme = theme;
+            document.body.dataset.specialty = appData.config.specialty; // Apply specialty for CSS visibility
+            saveData();
+        }
+        
+        function setupSpecialtyCards(){
+            const cards = document.querySelectorAll('#configModal .specialty-card');
+            const input = document.getElementById('profSpecialty');
+            
+            cards.forEach(card=>{
+                card.addEventListener('click', ()=>{
+                    cards.forEach(c=>c.classList.remove('selected'));
+                    card.classList.add('selected');
+                    input.value = card.dataset.value;
+                });
+            });
+            if(appData.config.specialty){
+                const pre = Array.from(cards).find(c=>c.dataset.value===appData.config.specialty);
+                if(pre){ 
+                    pre.classList.add('selected'); 
+                    input.value = pre.dataset.value; 
+                }
+            }
+        }
+
+        // --- Event Listeners ---
+        function setupEventListeners() {
+            // Config
+            document.getElementById('configForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                appData.config.name = document.getElementById('profName').value;
+                appData.config.specialty = document.getElementById('profSpecialty').value;
+
+                if(!appData.config.specialty){
+                    showToast('Selecciona una especialidad','error');
+                    return;
+                }
+                document.body.dataset.specialty = appData.config.specialty; // Apply specialty immediately
+                saveData();
+                document.getElementById('configModal').style.display = 'none';
+                updateHeader();
+                showToast('Perfil configurado', 'success');
+            });
+
+            // New Patient
+            document.getElementById('btnNewPatient').addEventListener('click', () => {
+                document.getElementById('newPatientModal').style.display = 'flex';
+            });
+
+            document.getElementById('newPatientForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const newP = {
+                    id: Date.now().toString(),
+                    name: document.getElementById('npName').value,
+                    rut: document.getElementById('npRUT').value,
+                    dob: document.getElementById('npDOB').value,
+                    parent: document.getElementById('npParent').value,
+                    whatsapp: document.getElementById('npWhatsapp').value,
+                    diagnosis: '',
+                    background: '',
+                    generalObj: '',
+                    specificObjs: [],
+                    sessions: [],
+                    agenda: [],
+                    evaluations: [],
+                    // Psych fields
+                    psychReason: '',
+                    psychHistory: '',
+                    psychDiagnosis: '',
+                    psychApproach: ''
+                };
+                appData.patients.push(newP);
+                saveData();
+                renderPatientList();
+                closeModal('newPatientModal');
+                document.getElementById('newPatientForm').reset();
+                showToast('Paciente creado', 'success');
+            });
+
+            // Search
+            document.getElementById('searchPatient').addEventListener('input', (e) => {
+                renderPatientList(e.target.value);
+            });
+
+            // Clinical Data Update
+            document.getElementById('clinicalForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                if(!currentPatientId) return;
+                const p = getPatient();
+                p.diagnosis = document.getElementById('pDiagnosis').value;
+                p.background = document.getElementById('pBackground').value;
+                
+                // Save Psych Fields
+                p.psychReason = document.getElementById('psychReason').value;
+                p.psychHistory = document.getElementById('psychHistory').value;
+                p.psychDiagnosis = document.getElementById('psychDiagnosis').value;
+                
+                saveData();
+                showToast('Datos clínicos actualizados', 'success');
+            });
+            
+            document.getElementById('btnDeletePatient').addEventListener('click', () => {
+                if(!currentPatientId) return;
+                const p = getPatient();
+                if(!p) return;
+                const ok = confirm(`Eliminar paciente ${p.name}? Esta acción no se puede deshacer.`);
+                if(!ok) return;
+                appData.patients = appData.patients.filter(x => x.id !== p.id);
+                saveData();
+                currentPatientId = null;
+                document.getElementById('mainContent').classList.remove('active');
+                renderPatientList();
+                document.getElementById('patientHeader').innerHTML = '';
+                showToast('Paciente eliminado', 'success');
+            });
+
+            // Objectives
+            document.getElementById('btnAddSpecObj').addEventListener('click', () => {
+                const input = document.getElementById('newSpecObj');
+                if(input.value.trim()) {
+                    addSpecificObjUI(input.value, false);
+                    input.value = '';
+                }
+            });
+
+            document.getElementById('btnSaveObjectives').addEventListener('click', () => {
+                if(!currentPatientId) return;
+                const p = getPatient();
+                p.generalObj = document.getElementById('generalObj').value;
+                p.psychApproach = document.getElementById('psychApproach').value;
+                
+                // Collect specific objs
+                p.specificObjs = [];
+                document.querySelectorAll('.specific-objective-item').forEach(item => {
+                    p.specificObjs.push({
+                        text: item.querySelector('span').innerText,
+                        done: item.querySelector('input').checked
+                    });
+                });
+                
+                saveData();
+                showToast('Objetivos guardados', 'success');
+            });
+
+            // Mood Selectors
+            setupMoodSelector('startMood', 'inputStartMood');
+            setupMoodSelector('endMood', 'inputEndMood');
+
+            // Session Submit
+            document.getElementById('sessionForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                if(!currentPatientId) return;
+                const p = getPatient();
+                
+                const session = {
+                    id: Date.now().toString(),
+                    date: document.getElementById('sessDate').value,
+                    number: document.getElementById('sessNumber').value,
+                    work: document.getElementById('sessWork').value,
+                    achievements: document.getElementById('sessAchieve').value,
+                    difficulties: document.getElementById('sessDiff').value,
+                    homework: document.getElementById('sessHomework').value,
+                    startMood: document.getElementById('inputStartMood').value,
+                    endMood: document.getElementById('inputEndMood').value,
+                    // Psych
+                    psychSessionNote: document.getElementById('psychSessionNote').value,
+                    psychHomework: document.getElementById('psychHomework').value,
+                    psychPrivateNotes: document.getElementById('psychPrivateNotes').value,
+                    psychPop: document.getElementById('sessPsychPop').value,
+                    psychModality: document.getElementById('sessPsychModality').value,
+                    psychDuration: document.getElementById('sessPsychDuration').value,
+                    psychApproach: document.getElementById('sessPsychApproach').value
+                };
+                
+                p.sessions.push(session);
+                p.sessions.sort((a,b) => new Date(b.date) - new Date(a.date));
+                saveData();
+                renderSessions(p);
+                updateWhatsappSelect(p);
+                document.getElementById('sessionForm').reset();
+                resetMoodSelectors();
+                showToast('Sesión registrada', 'success');
+            });
+
+            // Agenda Submit
+            document.getElementById('agendaForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                if(!currentPatientId) return;
+                const p = getPatient();
+                
+                p.agenda.push({
+                    id: Date.now().toString(),
+                    date: document.getElementById('apptDate').value,
+                    time: document.getElementById('apptTime').value,
+                    note: document.getElementById('apptNote').value
+                });
+                
+                p.agenda.sort((a,b) => new Date(a.date + ' ' + a.time) - new Date(b.date + ' ' + b.time));
+                saveData();
+                renderAgenda(p);
+                document.getElementById('agendaForm').reset();
+                showToast('Cita agendada', 'success');
+            });
+
+            // Evaluations Submit
+            document.getElementById('evaluationForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                if(!currentPatientId) return;
+                const p = getPatient();
+                const evalItem = {
+                    id: Date.now().toString(),
+                    name: document.getElementById('evalName').value,
+                    analysis: document.getElementById('evalAnalysis').value,
+                    date: new Date().toISOString()
+                };
+                p.evaluations = p.evaluations || [];
+                p.evaluations.push(evalItem);
+                saveData();
+                renderEvaluations(p);
+                document.getElementById('evaluationForm').reset();
+                showToast('Evaluación guardada', 'success');
+            });
+
+            // WhatsApp Select
+            document.getElementById('whatsappSessionSelect').addEventListener('change', (e) => {
+                generateWhatsapp(e.target.value);
+            });
+
+            document.getElementById('btnSendWhatsapp').addEventListener('click', () => {
+                const txt = document.getElementById('whatsappPreview').value;
+                if(!txt) return;
+                const p = getPatient();
+                window.open(`https://wa.me/${p.whatsapp.replace(/\D/g,'')}?text=${encodeURIComponent(txt)}`, '_blank');
+            });
+
+            // Export/Import
+            document.getElementById('btnExport').addEventListener('click', () => {
+                const dataStr = JSON.stringify(appData, null, 2);
+                const blob = new Blob([dataStr], {type: "application/json"});
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `respaldo_terapia_${new Date().toISOString().split('T')[0]}.json`;
+                a.click();
+            });
+
+            document.getElementById('btnImport').addEventListener('click', () => document.getElementById('fileImport').click());
+            
+            document.getElementById('fileImport').addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if(!file) return;
+                const reader = new FileReader();
+                reader.onload = (ev) => {
+                    try {
+                        appData = JSON.parse(ev.target.result);
+                        saveData();
+                        location.reload();
+                    } catch(err) {
+                        showToast('Error al importar', 'error');
+                    }
+                };
+                reader.readAsText(file);
+            });
+            
+            document.getElementById('btnExportPDF').addEventListener('click', () => {
+                exportPatientPDF();
+            });
+            
+            document.getElementById('themeSelect')?.addEventListener('change', (e) => {
+                applyTheme(e.target.value);
+            });
+            
+            document.getElementById('globalView')?.addEventListener('change', renderGlobalAgenda);
+            document.getElementById('globalAnchorDate')?.addEventListener('change', renderGlobalAgenda);
+        }
+
+        // --- UI Helper Functions ---
+        function getPatient() {
+            return appData.patients.find(p => p.id === currentPatientId);
+        }
+
+        function getObjectivesSuggestions() {
+            const spec = appData.config.specialty;
+            const suggestions = {
+                'Terapia Ocupacional': [
+                    "Mejorar desempeño en Actividades de la Vida Diaria Básicas.",
+                    "Fomentar la integración sensorial y regulación emocional.",
+                    "Potenciar habilidades de motricidad fina y coordinación."
+                ],
+                'Kinesiología': [
+                    "Recuperar rango de movimiento funcional.",
+                    "Fortalecer musculatura estabilizadora del core.",
+                    "Mejorar patrón respiratorio y capacidad ventilatoria."
+                ],
+                'Fonoaudiología': [
+                    "Estimular desarrollo del lenguaje expresivo y comprensivo.",
+                    "Mejorar funciones deglutorias y manejo de alimentos.",
+                    "Potenciar habilidades de comunicación social pragmática."
+                ],
+                'Psicólogo/a': [
+                    "Fortalecer estrategias de regulación emocional.",
+                    "Desarrollar herramientas de afrontamiento ante el estrés.",
+                    "Mejorar habilidades sociales y vínculos interpersonales.",
+                    "Elaborar duelo y resignificar experiencias traumáticas."
+                ]
+            };
+            return suggestions[spec] || [];
+        }
+
+        function updateHeader() {
+            document.getElementById('profInfoDisplay').innerHTML = `
+                <i class="fas fa-user-md"></i> ${appData.config.name} | ${appData.config.specialty}
+            `;
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        function renderPatientList(filter=''){
+            const list = document.getElementById('patientList');
+            list.innerHTML = '';
+            appData.patients.forEach(p => {
+                if(p.name.toLowerCase().includes(filter.toLowerCase())) {
+                    const li = document.createElement('li');
+                    li.className = 'patient-item glass-card';
+                    li.style.padding = '15px';
+                    li.innerHTML = `
+                        <strong>${p.name}</strong>
+                        <div style="font-size:0.8rem; color:var(--text-light); margin-top:5px;">
+                            ${calculateAge(p.dob)} años${(p.parent && p.parent.trim().length ? ' | '+p.parent : '')}
+                        </div>
+                    `;
+                    li.onclick = () => loadPatientView(p.id);
+                    list.appendChild(li);
+                }
+            });
+        }
+
+        function loadPatientView(id) {
+            currentPatientId = id;
+            const p = getPatient();
+            document.getElementById('mainContent').classList.add('active');
+            
+            // Header
+            document.getElementById('patientHeader').innerHTML = `
+                <h2 style="color:var(--primary-color);">${p.name}</h2>
+                <div style="display:flex; gap:20px; color:var(--text-light); margin-top:10px;">
+                    <span><i class="fas fa-birthday-cake"></i> ${calculateAge(p.dob)} años</span>
+                    <span><i class="fas fa-id-card"></i> ${p.rut}</span>
+                    ${(p.parent && p.parent.trim().length ? `<span><i class="fas fa-user"></i> ${p.parent}</span>` : '')}
+                    <span><i class="fab fa-whatsapp"></i> ${p.whatsapp}</span>
+                </div>
+            `;
+
+            // Fill Forms
+            document.getElementById('pDiagnosis').value = p.diagnosis || '';
+            document.getElementById('pBackground').value = p.background || '';
+            
+            // Psych Fill
+            document.getElementById('psychReason').value = p.psychReason || '';
+            document.getElementById('psychHistory').value = p.psychHistory || '';
+            document.getElementById('psychDiagnosis').value = p.psychDiagnosis || '';
+
+            // Objectives
+            document.getElementById('generalObj').value = p.generalObj || '';
+            document.getElementById('psychApproach').value = p.psychApproach || '';
+            
+            // Suggestions logic
+            const suggestionsDiv = document.getElementById('objSuggestions');
+            const suggestions = getObjectivesSuggestions();
+            if(suggestions.length > 0 && !p.generalObj) {
+                suggestionsDiv.innerHTML = `Sugerencias ${appData.config.specialty}: <br> - ${suggestions.join('<br> - ')}`;
+                // Make clickable
+                suggestionsDiv.querySelectorAll('br').forEach(br => br.replaceWith(document.createElement('br'))); 
+            } else {
+                suggestionsDiv.innerHTML = '';
+            }
+
+            const objList = document.getElementById('specificObjList');
+            objList.innerHTML = '';
+            if(p.specificObjs) {
+                p.specificObjs.forEach(obj => addSpecificObjUI(obj.text, obj.done));
+            }
+
+            // Sessions
+            renderSessions(p);
+            
+            // Agenda
+            renderAgenda(p);
+
+            // WhatsApp
+            updateWhatsappSelect(p);
+
+            // Evaluations
+            renderEvaluations(p);
+            
+            renderGlobalAgenda();
+
+            showToast(`Paciente ${p.name} cargado`);
+        }
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-pane').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            
+            document.getElementById(`tab-${tabName}`).classList.add('active');
+            // Find button (simplified)
+            event.target.classList.add('active');
+        }
+
+        function addSpecificObjUI(text, done) {
+            const container = document.getElementById('specificObjList');
+            const div = document.createElement('div');
+            div.className = 'specific-objective-item';
+            div.innerHTML = `
+                <input type="checkbox" ${done ? 'checked' : ''} style="width:auto; margin:0;">
+                <span style="flex:1; text-decoration: ${done ? 'line-through' : 'none'}">${text}</span>
+                <button type="button" class="btn btn-secondary" style="padding:2px 8px; font-size:0.8rem;" onclick="this.parentElement.remove()"><i class="fas fa-trash"></i></button>
+            `;
+            // Add click listener for checkbox to toggle strikethrough
+            div.querySelector('input').addEventListener('change', (e) => {
+                div.querySelector('span').style.textDecoration = e.target.checked ? 'line-through' : 'none';
+                // Auto-save objectives state on checkbox toggle
+                if(currentPatientId) {
+                    const p = getPatient();
+                    p.specificObjs = [];
+                    document.querySelectorAll('.specific-objective-item').forEach(item => {
+                        p.specificObjs.push({
+                            text: item.querySelector('span').innerText,
+                            done: item.querySelector('input').checked
+                        });
+                    });
+                    saveData();
+                }
+            });
+            container.appendChild(div);
+        }
+
+        function setupMoodSelector(divId, inputId) {
+            const div = document.getElementById(divId);
+            div.querySelectorAll('.mood-option').forEach(opt => {
+                opt.addEventListener('click', () => {
+                    div.querySelectorAll('.mood-option').forEach(o => o.classList.remove('selected'));
+                    opt.classList.add('selected');
+                    document.getElementById(inputId).value = opt.dataset.value;
+                });
+            });
+        }
+
+        function resetMoodSelectors() {
+            document.querySelectorAll('.mood-option').forEach(o => o.classList.remove('selected'));
+            document.getElementById('inputStartMood').value = '';
+            document.getElementById('inputEndMood').value = '';
+        }
+
+        function renderSessions(p) {
+            const container = document.getElementById('sessionsHistory');
+            container.innerHTML = '';
+            const isPsych = appData.config.specialty === 'Psicólogo/a';
+
+            p.sessions.forEach(s => {
+                const card = document.createElement('div');
+                card.className = 'glass-card';
+                
+                let content = `
+                    <div style="display:flex; justify-content:space-between; margin-bottom:10px; border-bottom:1px solid rgba(0,0,0,0.05); padding-bottom:5px;">
+                        <strong>Sesión #${s.number}</strong>
+                        <span>${new Date(s.date).toLocaleDateString()}</span>
+                    </div>
+                `;
+
+                if(isPsych) {
+                    content += `
+                        <div style="font-size:0.85rem; background:rgba(255,255,255,0.4); padding:8px; border-radius:8px; margin-bottom:10px; display:grid; grid-template-columns: 1fr 1fr; gap:5px;">
+                             <span>👥 ${s.psychPop || '-'}</span>
+                             <span>💻 ${s.psychModality || '-'}</span>
+                             <span>⏱️ ${s.psychDuration || '-'} min</span>
+                             <span>🧠 ${s.psychApproach || '-'}</span>
+                        </div>
+                        <p><strong>📖 Registro:</strong> ${s.psychSessionNote || 'Sin registro'}</p>
+                        <p><strong>⭐ Logros/Avances:</strong> ${s.achievements || '-'}</p>
+                        <p><strong>⚠️ Dificultades:</strong> ${s.difficulties || '-'}</p>
+                        <div style="margin-top:10px; display:flex; gap:15px; background:rgba(255,255,255,0.5); padding:10px; border-radius:10px;">
+                            <span><i class="fas fa-hourglass-start"></i> ${s.startMood || '-'}</span>
+                            <span><i class="fas fa-hourglass-end"></i> ${s.endMood || '-'}</span>
+                        </div>
+                        <div style="margin-top:10px; color:#d63031; font-weight:500;"><i class="fas fa-clipboard-list"></i> Tareas: ${s.psychHomework || 'Sin tareas'}</div>
+                        ${s.psychPrivateNotes ? `<div style="margin-top:10px; color:#636e72; font-style:italic; border-top:1px dashed #ccc; padding-top:5px;"><i class="fas fa-lock"></i> ${s.psychPrivateNotes}</div>` : ''}
+                    `;
+                } else {
+                    content += `
+                        <p><strong>Trabajo:</strong> ${s.work}</p>
+                        <p><strong>Logros:</strong> ${s.achievements}</p>
+                        <p><strong>Dificultades:</strong> ${s.difficulties || 'Sin registro'}</p>
+                        <div style="margin-top:10px; display:flex; gap:15px; background:rgba(255,255,255,0.5); padding:10px; border-radius:10px;">
+                            <span><i class="fas fa-hourglass-start"></i> ${s.startMood}</span>
+                            <span><i class="fas fa-hourglass-end"></i> ${s.endMood}</span>
+                        </div>
+                        <div style="margin-top:10px; color:#d63031; font-weight:500;"><i class="fas fa-home"></i> Actividades para la casa: ${s.homework || 'Sin actividad asignada'}</div>
+                    `;
+                }
+                
+                card.innerHTML = content;
+                container.appendChild(card);
+            });
+        }
+
+        function renderAgenda(p) {
+            const grid = document.getElementById('agendaList');
+            grid.innerHTML = '';
+            p.agenda.forEach(a => {
+                const card = document.createElement('div');
+                card.className = 'post-it';
+                card.innerHTML = `
+                    <div class="post-it-date">${new Date(a.date).toLocaleDateString()}</div>
+                    <div style="font-size:1.2rem;">${a.time}</div>
+                    <div class="post-it-note">${a.note}</div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function renderEvaluations(p) {
+            const list = document.getElementById('evaluationsList');
+            if(!list) return;
+            list.innerHTML = '';
+            (p.evaluations || []).forEach(ev => {
+                const card = document.createElement('div');
+                card.className = 'glass-card';
+                card.innerHTML = `
+                    <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                        <strong>${ev.name}</strong>
+                        <span style="color:var(--text-light);">${new Date(ev.date).toLocaleDateString()}</span>
+                    </div>
+                    <div>${ev.analysis}</div>
+                `;
+                list.appendChild(card);
+            });
+        }
+        
+        function renderGlobalAgenda() {
+            const list = document.getElementById('globalAgendaList');
+            if(!list) return;
+            list.innerHTML = '';
+            const view = (document.getElementById('globalView')?.value) || 'diaria';
+            const anchorStr = (document.getElementById('globalAnchorDate')?.value) || new Date().toISOString().split('T')[0];
+            const anchor = new Date(anchorStr);
+            const items = [];
+            (appData.patients || []).forEach(p => {
+                (p.agenda || []).forEach(a => {
+                    items.push({
+                        date: a.date,
+                        time: a.time,
+                        note: a.note,
+                        patient: p.name
+                    });
+                });
+            });
+            items.sort((a,b) => parseYMD(a.date) - parseYMD(b.date) || a.time.localeCompare(b.time));
+            if(view === 'mensual') {
+                const year = anchor.getFullYear();
+                const month = anchor.getMonth();
+                const firstDay = new Date(year, month, 1);
+                const startIndex = (firstDay.getDay() + 6) % 7;
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+                const weekLabels = ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
+                const monthEvents = items.filter(it => {
+                    const d = parseYMD(it.date);
+                    return d.getFullYear() === year && d.getMonth() === month;
+                });
+                const wrapper = document.createElement('div');
+                wrapper.className = 'calendar-wrapper';
+                weekLabels.forEach(lbl => {
+                    const h = document.createElement('div');
+                    h.className = 'calendar-header-cell';
+                    h.textContent = lbl;
+                    wrapper.appendChild(h);
+                });
+                for(let i=0; i<startIndex; i++) {
+                    const empty = document.createElement('div');
+                    empty.className = 'calendar-cell';
+                    wrapper.appendChild(empty);
+                }
+                for(let day=1; day<=daysInMonth; day++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'calendar-cell';
+                    const dateEl = document.createElement('div');
+                    dateEl.className = 'calendar-date';
+                    dateEl.textContent = day;
+                    cell.appendChild(dateEl);
+                    const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+                    const evs = monthEvents.filter(ev => ev.date === dateStr);
+                    evs.forEach(ev => {
+                        const e = document.createElement('div');
+                        e.className = 'calendar-event';
+                        e.textContent = `${ev.time} ${ev.patient ? '— '+ev.patient+' ' : ''}${ev.note}`;
+                        cell.appendChild(e);
+                    });
+                    wrapper.appendChild(cell);
+                }
+                list.appendChild(wrapper);
+            } else {
+                const filtered = items.filter(it => {
+                    if(view === 'diaria') {
+                        return it.date === anchorStr;
+                    } else {
+                        const start = new Date(anchor);
+                        const day = start.getDay();
+                        const diff = (day === 0 ? -6 : 1) - day;
+                        start.setDate(start.getDate() + diff);
+                        const end = new Date(start);
+                        end.setDate(end.getDate() + 6);
+                        const d = parseYMD(it.date);
+                        return d >= start && d <= end;
+                    }
+                });
+                filtered.forEach(a => {
+                    const card = document.createElement('div');
+                    card.className = 'post-it';
+                    card.innerHTML = `
+                        <div class="post-it-date">${new Date(a.date).toLocaleDateString()}</div>
+                        <div style="font-size:1.2rem;">${a.time}</div>
+                        <div class="post-it-note">${a.note}${a.patient ? ' — ' + a.patient : ''}</div>
+                    `;
+                    list.appendChild(card);
+                });
+            }
+        }
+
+        function updateWhatsappSelect(p) {
+            const sel = document.getElementById('whatsappSessionSelect');
+            sel.innerHTML = '<option value="">Selecciona una sesión...</option>';
+            p.sessions.forEach(s => {
+                const opt = document.createElement('option');
+                opt.value = s.id;
+                opt.text = `Sesión #${s.number} (${new Date(s.date).toLocaleDateString()})`;
+                sel.appendChild(opt);
+            });
+        }
+
+        function generateWhatsapp(sessId) {
+            if(!sessId || !currentPatientId) {
+                document.getElementById('whatsappPreview').value = '';
+                return;
+            }
+            const p = getPatient();
+            const s = p.sessions.find(x => x.id === sessId);
+            const next = p.agenda[0]; // Simple logic: gets first agenda item (assuming sorted)
+
+            // STRICT: NO EMOJIS, UPPERCASE
+            let msg = `HOLA ${p.parent.toUpperCase()}, LE ESCRIBO PARA CONTARLE SOBRE LA SESION DE HOY DE ${p.name.toUpperCase()}.\n\n`;
+            msg += `FECHA: ${new Date(s.date).toLocaleDateString()}\n`;
+            msg += `SESION N: ${s.number}\n\n`;
+            
+            msg += `TRABAJO REALIZADO:\n${s.work.toUpperCase()}\n\n`;
+            
+            msg += `LOGROS:\n${(s.achievements || 'SIN OBSERVACIONES').toUpperCase()}\n\n`;
+            
+            msg += `DIFICULTADES:\n${(s.difficulties || 'SIN REGISTRO').toUpperCase()}\n\n`;
+            
+            msg += `ACTIVIDADES PARA LA CASA:\n${(s.homework || 'SIN ACTIVIDAD ASIGNADA').toUpperCase()}\n\n`;
+            
+            if(next) {
+                msg += `PRÓXIMA CITA: ${new Date(next.date).toLocaleDateString()} A LAS ${next.time}\n\n`;
+            }
+            
+            msg += `SALUDOS CORDIALES,\n${appData.config.name.toUpperCase()}\n${appData.config.specialty.toUpperCase()}`;
+            
+            document.getElementById('whatsappPreview').value = msg;
+        }
+        
+        function exportPatientPDF() {
+            if(!currentPatientId) {
+                showToast('Selecciona un paciente', 'info');
+                return;
+            }
+            const p = getPatient();
+            if(!window.jspdf || !window.jspdf.jsPDF) {
+                showToast('Biblioteca PDF no disponible', 'error');
+                return;
+            }
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF('p','pt','a4');
+            const margin = 40;
+            let y = margin;
+            doc.setFont('helvetica','bold');
+            doc.setFontSize(18);
+            doc.text('Informe Clínico - Registro Terapéutico', margin, y);
+            y += 24;
+            doc.setFontSize(12);
+            doc.setFont('helvetica','normal');
+            doc.text(`${p.name} | RUT: ${p.rut}`, margin, y);
+            y += 16;
+            doc.text(`Edad: ${calculateAge(p.dob)} | Apoderado: ${p.parent} | WhatsApp: ${p.whatsapp}`, margin, y);
+            y += 16;
+            doc.text(`Profesional: ${appData.config.name} | Especialidad: ${appData.config.specialty}`, margin, y);
+            y += 24;
+            const infoRows = [
+                ['Diagnóstico', p.diagnosis || '-'],
+                ['Antecedentes', p.background || '-'],
+            ];
+
+            // Fix for Psychology PDF export
+            if(appData.config.specialty === 'Psicólogo/a') {
+                infoRows.push(['Motivo de Consulta', p.psychReason || '-']);
+                infoRows.push(['Antecedentes Psicológicos', p.psychHistory || '-']);
+                infoRows.push(['Diagnóstico DSM-5', p.psychDiagnosis || '-']);
+                infoRows.push(['Enfoque Terapéutico', p.psychApproach || '-']);
+            }
+
+            doc.autoTable({
+                startY: y,
+                head: [['Campo','Contenido']],
+                body: infoRows,
+                styles: { fontSize: 10, cellPadding: 6 },
+                headStyles: { fillColor: [162,155,254] }
+            });
+            y = doc.lastAutoTable.finalY + 20;
+            doc.setFont('helvetica','bold');
+            doc.text('Plan de Tratamiento', margin, y);
+            y += 14;
+            doc.setFont('helvetica','normal');
+            const general = p.generalObj || '-';
+            const wrapped = doc.splitTextToSize(general, 520);
+            doc.text(wrapped, margin, y);
+            y += wrapped.length * 14 + 6;
+            const specRows = (p.specificObjs || []).map(o => [o.done ? '✔' : '•', o.text]);
+            if(specRows.length > 0) {
+                doc.autoTable({
+                    startY: y,
+                    head: [['Estado','Objetivo específico']],
+                    body: specRows,
+                    styles: { fontSize: 10, cellPadding: 6 },
+                    headStyles: { fillColor: [253,121,168] }
+                });
+                y = doc.lastAutoTable.finalY + 20;
+            }
+            doc.setFont('helvetica','bold');
+            doc.text('Sesiones', margin, y);
+            y += 6;
+            const sessionRows = (p.sessions || []).map(s => [
+                new Date(s.date).toLocaleDateString(),
+                s.number,
+                (appData.config.specialty === 'Psicólogo/a' ? (s.psychSessionNote || s.work) : s.work) || '-',
+                s.achievements || '-',
+                s.difficulties || '-',
+                (appData.config.specialty === 'Psicólogo/a' ? (s.psychHomework || s.homework) : s.homework) || '-'
+            ]);
+            doc.autoTable({
+                startY: y + 8,
+                head: [['Fecha','N°','Trabajo','Logros','Dificultades','Actividades']],
+                body: sessionRows,
+                styles: { fontSize: 9, cellPadding: 5 },
+                headStyles: { fillColor: [129,236,236] },
+                columnStyles: { 2: { cellWidth: 120 }, 3: { cellWidth: 120 }, 4: { cellWidth: 120 }, 5: { cellWidth: 120 } }
+            });
+            y = doc.lastAutoTable.finalY + 20;
+            doc.setFont('helvetica','bold');
+            doc.text('Agenda', margin, y);
+            y += 6;
+            const agendaRows = (p.agenda || []).map(a => [
+                new Date(a.date).toLocaleDateString(),
+                a.time || '-',
+                a.note || '-'
+            ]);
+            doc.autoTable({
+                startY: y + 8,
+                head: [['Fecha','Hora','Nota']],
+                body: agendaRows,
+                styles: { fontSize: 9, cellPadding: 5 },
+                headStyles: { fillColor: [250,177,160] }
+            });
+            y = doc.lastAutoTable.finalY + 20;
+            doc.setFont('helvetica','bold');
+            doc.text('Evaluaciones', margin, y);
+            y += 6;
+            const evalRows = (p.evaluations || []).map(ev => [
+                ev.name || '-',
+                ev.analysis || '-',
+                new Date(ev.date).toLocaleDateString()
+            ]);
+            doc.autoTable({
+                startY: y + 8,
+                head: [['Prueba','Análisis','Fecha']],
+                body: evalRows,
+                styles: { fontSize: 9, cellPadding: 5 },
+                headStyles: { fillColor: [162,155,254] },
+                columnStyles: { 1: { cellWidth: 320 } }
+            });
+            const dateStr = new Date().toISOString().split('T')[0];
+            const safeName = p.name.replace(/[^a-zA-Z0-9_\\-]/g,'_');
+            doc.save(`informe_${safeName}_${dateStr}.pdf`);
+            showToast('PDF generado', 'success');
+        }
+// 📊 DASHBOARD
+
+function actualizarDashboard() {
+    const pacientes = JSON.parse(localStorage.getItem("patients")) || [];
+    const sesiones = JSON.parse(localStorage.getItem("sessions")) || [];
+
+    // Totales
+    document.getElementById("totalPatients").textContent = pacientes.length;
+    document.getElementById("totalSessions").textContent = sesiones.length;
+
+    // Fecha actual
+    const hoy = new Date();
+    const fechaHoy = hoy.toISOString().split("T")[0];
+
+    const dias = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+    const meses = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+
+    const mensaje = `✨ ${dias[hoy.getDay()]}, ${hoy.getDate()} de ${meses[hoy.getMonth()]} ✨ Sigue avanzando 💪`;
+    document.getElementById("dashboardMessage").textContent = mensaje;
+
+    // Pacientes del día
+    const contenedor = document.getElementById("todayPatients");
+    contenedor.innerHTML = "";
+
+    const sesionesHoy = sesiones.filter(s => s.date === fechaHoy);
+
+    if (sesionesHoy.length === 0) {
+        contenedor.innerHTML = "<div style='color:var(--text-light);'>Sin sesiones hoy</div>";
+        return;
+    }
+
+    sesionesHoy.forEach(s => {
+        const div = document.createElement("div");
+        div.className = "glass-card";
+        div.style.marginBottom = "8px";
+
+        div.innerHTML = `
+            <strong>👤 ${s.patientName || "Paciente"}</strong><br>
+            ⏰ ${s.time || "Sin hora"}
+        `;
+
+        contenedor.appendChild(div);
+    });
+}
+
+// Ejecutar al cargar
+document.addEventListener("DOMContentLoaded", actualizarDashboard);
+// 📊 DASHBOARD CORREGIDO
+function actualizarDashboard() {
+    // 1. Extraer los datos desde la estructura correcta
+    const pacientes = appData.patients || [];
+    
+    // 2. Calcular el total de sesiones sumando las de todos los pacientes
+    let totalSesionesGlobal = 0;
+    pacientes.forEach(p => {
+        totalSesionesGlobal += (p.sessions ? p.sessions.length : 0);
+    });
+
+    // 3. Actualizar los números en el HTML
+    document.getElementById("totalPatients").textContent = pacientes.length;
+    document.getElementById("totalSessions").textContent = totalSesionesGlobal;
+
+    // 4. Configurar fecha y mensaje motivador
+    const hoy = new Date();
+    const fechaHoy = hoy.toISOString().split("T")[0]; // Formato YYYY-MM-DD
+
+    const dias = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+    const meses = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+
+    const mensaje = `✨ ${dias[hoy.getDay()]}, ${hoy.getDate()} de ${meses[hoy.getMonth()]} ✨ Sigue avanzando 💪`;
+    document.getElementById("dashboardMessage").textContent = mensaje;
+
+    // 5. Mostrar pacientes agendados para HOY
+    const contenedor = document.getElementById("todayPatients");
+    contenedor.innerHTML = "";
+
+    let citasHoy = [];
+    pacientes.forEach(p => {
+        if (p.agenda) {
+            p.agenda.forEach(cita => {
+                if (cita.date === fechaHoy) {
+                    citasHoy.push({
+                        nombre: p.name,
+                        hora: cita.time
+                    });
+                }
+            });
+        }
+    });
+
+    // Ordenar citas por hora
+    citasHoy.sort((a, b) => a.hora.localeCompare(b.hora));
+
+    if (citasHoy.length === 0) {
+        contenedor.innerHTML = "<div style='color:var(--text-light); font-style:italic;'>No hay pacientes agendados para hoy.</div>";
+    } else {
+        citasHoy.forEach(cita => {
+            const div = document.createElement("div");
+            div.className = "glass-card";
+            div.style.marginBottom = "8px";
+            div.style.padding = "10px";
+            div.style.borderLeft = "4px solid var(--primary-color)";
+
+            div.innerHTML = `
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <strong>👤 ${cita.nombre}</strong>
+                    <span class="btn-accent" style="padding:2px 8px; border-radius:8px; font-size:0.8rem;">⏰ ${cita.hora}</span>
+                </div>
+            `;
+            contenedor.appendChild(div);
+        });
+    }
+}
+
+// Asegurarnos de que el dashboard se actualice cada vez que guardamos algo
+const originalSaveData = saveData;
+saveData = function() {
+    originalSaveData();
+    actualizarDashboard();
+};
+    </script>
+</body>
+</html>
